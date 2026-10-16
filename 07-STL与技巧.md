@@ -2,8 +2,6 @@
 
 ## 不同集合匹配最小次数
 
-![img-012.png](images/img-012.png)
-
 ```cpp
 ans = max(1LL * max_val, (sum + 1)/2);
 ```
@@ -12,32 +10,18 @@ ans = max(1LL * max_val, (sum + 1)/2);
 
 =》
 
-![img-002.png](images/img-002.png)
-
 ·  当且仅当 aa,bb 同时奇数：线段上一共有g个中心点。(gcd(aa,bb)==1),g=gcd(a,b)
 
 ·  否则：0 个中心点
 
 ## Short
 
-![img-074.png](images/img-074.png)
-
-![img-073.png](images/img-073.png)
-
-![img-072.png](images/img-072.png)
-
 ```cpp
 memset(dp,0xc0,sizeof(dp)); // 全初始化为负无穷
 E(X)
 ```
 
-![img-071.png](images/img-071.png)
-
-![img-070.png](images/img-070.png)
-
 ## 函数传数组问题
-
-![img-069.png](images/img-069.png)
 
 传的格式如图，然后记得要memcpy要不然函数里的变动会影响函数外的变动
 
@@ -55,21 +39,30 @@ tuple<int, int, int>
 
 ## Priority_queue
 
-![img-010.png](images/img-010.png)
-
 ```cpp
-map&&unordered_map
+// 小顶堆（小数在上面）：priority_queue 默认是大顶堆，要小顶堆必须这样写
+priority_queue<int, vector<int>, greater<int>> q;
 ```
 
-![img-009.png](images/img-009.png)
+## map&&unordered_map
 
-![img-008.png](images/img-008.png)
+emplace 的作用是直接调用构造函数：给结构体加了 `node(ll d, int i)` 构造函数后，编译器就能完美匹配 `emplace(a[i], i)` 的参数，直接构造 node 对象，彻底解决编译报错。
 
 ## 错误：
 
-## 数组位置
+memset 错误修正：`memset` 按字节填充，不能用于给 int 数组赋任意值，正确做法是用 `fill` 初始化：
 
-![img-007.png](images/img-007.png)
+```cpp
+// 原错误代码
+// memset(nex, s.size(), sizeof(s));
+// memset(cur, s.size(), sizeof(cur));
+
+// 正确代码：用 fill 初始化整个数组
+fill(nex, nex + 100010, s.size());
+fill(cur, cur + 26, s.size());
+```
+
+## 数组位置
 
 ## Int 类型数组可用
 
@@ -78,8 +71,6 @@ memset(dp1,0x80,sizeof(dp1)); //定义为小
 memset(dp2,0x3f,sizeof(dp2));//定义为大
 len[i]==0x3f3f3f3f
 ```
-
-![img-004.png](images/img-004.png)
 
 ## 类型定义：
 
